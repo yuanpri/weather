@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--弹窗样式-->
+    <style name="AnimationRightFade"><!--右侧-->
+        <item name="android:windowEnterAnimation">@anim/in_right_to_left</item>  <!--打开动画-->
+        <item name="android:windowExitAnimation">@anim/out_left_to_right</item>  <!--关闭动画-->
+    </style>
+
+    <style name="AnimationBottomFade"><!--底部-->
+        <item name="android:windowEnterAnimation">@anim/in_bottom_to_top</item>
+        <item name="android:windowExitAnimation">@anim/out_top_to_bottom</item>
+    </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item><!--透明背景-->
+    </style>
+
+    <declare-styleable name="SunAnimationView">
+        <attr name="sun_circle_color" format="color"/>
+        <attr name="sun_font_color" format="color"/>
+        <attr name="sun_font_size" format="dimension"/>
+        <attr name="sun_circle_radius" format="integer"/>
+        <attr name="type" format="boolean"/>
+    </declare-styleable>
+
+    <!-- 圆角图片 -->
+    <style name="roundedImageStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+
+
+</resources>

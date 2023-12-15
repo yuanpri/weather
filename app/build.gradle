@@ -1,0 +1,96 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.gpnu.yuan.warmweather'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.gpnu.yuan.warmweather"
+        minSdk 31
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        buildConfig = true
+        //dataBinding = true
+    }
+
+    // 自定义打包
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "WarmWeatherNew${variant.versionName}.apk"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding true    //开启ViewBinding
+    }
+
+    //加载so文件
+    sourceSets{
+        main{
+            jniLibs.srcDir 'libs'
+            jni.srcDirs = []    //disable automatic ndk-build
+        }
+    }
+
+
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+
+//    implementation "androidx.room:room-runtime:2.3.0"
+//    annotationProcessor "androidx.room:room-compiler:2.3.0"
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+
+
+
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+
+    //依赖子模块
+    implementation project(path: ':library')
+
+    // Room数据库
+    implementation 'androidx.room:room-runtime:2.4.3'
+    annotationProcessor 'androidx.room:room-compiler:2.4.3'
+    // Room 支持RxJava2
+    implementation 'androidx.room:room-rxjava2:2.4.3'
+    // 腾讯MMKV
+    implementation 'com.tencent:mmkv:1.2.11'
+    // Gson
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+
+
+}
